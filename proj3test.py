@@ -46,7 +46,7 @@ class TestGraphDiameter(unittest.TestCase):
         self.assertEqual(result, expected)
 
      #simple undirected, weighted test
-    def test_4(self):
+    def test_5(self):
         maxVal = 1000000000
         a = np.array([[0, 2, 1, 5], 
                     [2, 0, maxVal, 1], 
