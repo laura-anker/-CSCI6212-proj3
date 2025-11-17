@@ -5,11 +5,25 @@ import random
 '''Diameter of a graph is defined as the largest distance between any pair of vertices 
 of G.  Give an efficient polynomial algorithm to find the diameter of the graph.'''
 
+#given matrix representing distance between vetices in graph (format described in generate_graph)
+#alters the given matrix so each spot in matrix [i, j] represents shortest path from i to j
 def floyd_warshall(g):
-    #do stuff
+    #max value representing infinity (no edge)
+    maxVal = 1000000000
+    #n = number of vertices
+    n = len(g)
+    #select each vertex to be intermediate vertex
+    for k in range(n):
+        #iterate through each pair of vertices
+        for i in range(n):
+            for j in range(n):
+                #if i and j are reachable by intermediate vertex k
+                if (g[i][k] != maxVal and g[k][j] != maxVal):
+                    #let min distance from i to j be itself or smaller path found with intermediate
+                    g[i][j] = min(g[i][j], (g[i][k] + g[k][j]))
     return
 
-#returns the largest distance between any pair of vertices in graph g, represented as matrix describes in generate_graph
+#returns the largest distance between any pair of vertices in graph g, represented as matrix described in generate_graph
 def graph_diameter(g):
     maxDist = -100
     #call floyd-warshall on g
