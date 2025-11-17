@@ -58,7 +58,7 @@ def generate_graph(n):
 
 def main():
     #different values of n, representing number of vertices, to test on
-    ns = [10, 100, 1000, 10000, 100000, 1000000, 10000000]
+    ns = [5, 10, 15, 50, 100, 200]
     #for each value of n
     for n in ns:
         #create nxn array  
