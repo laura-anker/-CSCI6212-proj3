@@ -38,7 +38,7 @@ def graph_diameter(g):
 
 #generates a nxn matrix representing a graph. Each value [i][j] in the matrix represents the distance between vertices i and j
 #values on the diagonal must be 0 because distance from node to itself is 0. 
-#0.8 probability of edge being set to extremely high value to represent nodes that are not connected to each other
+#0.2 probability of edge being set to extremely high value to represent nodes that are not connected to each other
 def generate_graph(n):
     maxVal = 1000000000 #effectively infinite
     edge_probability = 0.8 #probability of an edge being set between 2 nodes
