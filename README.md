@@ -35,6 +35,17 @@ The code is organized into four main functions: floyd_warshall, graph_diameter, 
     Process: Creates an n times n matrix initialized with zeros. For non-diagonal elements, there is an 80% probability (edge_probability = 0.8) of setting the edge weight to a random integer between 1 and 100. The remaining 20% of edges are set to the large value (maxVal), indicating no direct connection. Diagonal elements are set to 0.
     Returns: A 2D numpy array representing the generated graph.
 
+### perform_experimental_analysis(n_values):
+    Purpose: This function iterates through a provided list of input sizes (n_values). 
+    Parameters: n_values - list of input sizes
+    Process: For each size n, it
+        - Generates a random weighted graph using generate_graph(n)
+        - Starts a timer using time.time()
+        - Executes the graph_diameter function (which runs the core Floyd-Warshall logic)
+        - Stops the timer to capture the exact runtime
+        - Calculates the theoretical operation count n^3
+        - Aggregates these metrics into a structured list of dictionaries, which is returned for further processing (table and plotting)
+
 ### main():
     Purpose: To run the performance test on the graph_diameter function for various graph sizes.
     Process: Defines a set of test sizes for the number of vertices: ns = [5, 10, 15, 50, 100, 200]. For each n, it generates a graph using generate_graph(n). It measures the time taken to run graph_diameter on a copy of the matrix. It prints the execution time for each input size n.
