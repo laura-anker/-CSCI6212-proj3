@@ -1,6 +1,8 @@
 import time
 import numpy as np
 import random
+import math
+import copy
 import pandas as pd 
 import matplotlib.pyplot as plt
 
@@ -33,8 +35,8 @@ def floyd_warshall(g):
 
 #returns the largest distance between any pair of vertices in graph g, represented as matrix described in generate_graph
 def graph_diameter(g):
-    maxDist = 0
-    g_copy = g.copy()
+    maxDist = -math.inf
+    g_copy = copy.deepcopy(g)
     #call floyd-warshall on g
     floyd_warshall(g_copy)
     #find max value in resulting matrix

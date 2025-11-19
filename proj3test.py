@@ -1,5 +1,5 @@
 import unittest
-from proj3 import graph_diameter
+from proj3 import graph_diameter, INF
 import numpy as np
 
 class TestGraphDiameter(unittest.TestCase):
@@ -80,6 +80,63 @@ class TestGraphDiameter(unittest.TestCase):
         expected = -8
         result = graph_diameter(a.copy()) 
         self.assertEqual(result, expected)
+
+#EDGES CASES 1 - 4 BELOW
+    def test_case_1_disconnected_components(self):
+        """
+        Case 1: Disconnected Graphs.
+        Scenario: Two components with no path between them
+        """
+        maxVal = INF
+        # Component 1: 0 <-> 1 (weight 10)
+        # Component 2: 2 (isolated)
+        a = np.array([
+            [0,   10,  maxVal],
+            [10,  0,   maxVal],
+            [maxVal, maxVal, 0  ]
+        ], dtype=float)
+        
+
+        result = graph_diameter(a.copy())
+        
+        # Check if result is either 10 (max finite) or INF (disconnected)
+        self.assertTrue(result == 10 or result == maxVal)
+
+    def test_case_2_zero_weight_cycles(self):
+        """
+        Case 2: Zero-Weight Cycles.
+        Scenario: 0 -> 1 (5) and 1 -> 0 (-5). Sum is 0
+        """
+        a = np.array([
+            [0,   5],
+            [-5,  0]
+        ], dtype=float)
+        
+        # Shortest paths:
+        # 0->0: 0 
+        # 0->1: 5
+        # 1->0: -5
+        # 1->1: 0
+        # Max distance in matrix is 5.
+        expected = 5
+        result = graph_diameter(a.copy())
+        self.assertEqual(result, expected)
+
+    def test_case_3_negative_edges_no_cycle(self):
+        """
+        Case 3: Negative Edge Weights (Without Negative Cycles).
+        """
+        maxVal = 1000
+        a = np.array([
+            [0,      10,  maxVal],
+            [maxVal, 0,   -5    ],
+            [maxVal, maxVal, 0  ]
+        ], dtype=float)
+        
+        expected = 1000
+        result = graph_diameter(a.copy())
+        self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main()
