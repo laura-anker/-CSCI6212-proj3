@@ -32,9 +32,9 @@ The test accepts either:
 - Together, they form a cycle whose total weight is 0.
 - Zero-weight cycles should not reduce any shortest-path distances.
 - Floyd–Warshall correctly keeps the shortest paths as:
-    0 → 1 = 5
-    1 → 0 = −5
-    self-distances remain 0
+  0 → 1 = 5
+  1 → 0 = −5
+  self-distances remain 0
 #### Expected behavior:
 The diameter is defined as the largest finite shortest-path value, which is 5.
 
