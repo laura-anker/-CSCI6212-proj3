@@ -18,7 +18,7 @@ To ensure you have the required libraries, you can run: pip install numpy
 
 
 ### test_case_1_disconnected_components(self):
-- This test checks how the algorithm handles a graph that contains multiple dosconnected components
+- This test checks how the algorithm handles a graph that contains multiple disconnected components
 - In the test case, nodes 0 and 1 are connected to each other, but node 2 is completely isolated. Since there is no path between some pairs of vertices, Floyd–Warshall leaves those distances as INF.
 #### Expected behavior:
 If the graph is disconnected, the diameter should be reported as INF, because at least one pair of nodes cannot reach each other.
@@ -32,9 +32,7 @@ The test accepts either:
 - Together, they form a cycle whose total weight is 0.
 - Zero-weight cycles should not reduce any shortest-path distances.
 - Floyd–Warshall correctly keeps the shortest paths as:
-  0 → 1 = 5
-  1 → 0 = −5
-  self-distances remain 0
+  0 → 1 = 5, 1 → 0 = −5
 #### Expected behavior:
 The diameter is defined as the largest finite shortest-path value, which is 5.
 
