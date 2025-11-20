@@ -14,6 +14,36 @@ To ensure you have the required libraries, you can run: pip install numpy
 2.  **Unit Tests**: To verify the correctness of the core function, run the unit tests:
     `python proj3test.py`
 
+### Edge Cases Explanation:
+
+
+### test_case_1_disconnected_components(self):
+- This test checks how the algorithm handles a graph that contains multiple dosconnected components
+- In the test case, nodes 0 and 1 are connected to each other, but node 2 is completely isolated. Since there is no path between some pairs of vertices, Floyd–Warshall leaves those distances as INF.
+Expected behavior:
+If the graph is disconnected, the diameter should be reported as INF, because at least one pair of nodes cannot reach each other.
+The test accepts either:
+- The largest finite distance (10), or
+- INF
+
+### test_case_2_zero_weight_cycles(self):
+- This test checks how the algorithm handles zero-weight cycles.
+- In the test case, the graph has two nodes: edge 0 → 1 has weight 5, edge 1 → 0 has weight −5. 
+- Together, they form a cycle whose total weight is 0.
+- Zero-weight cycles should not reduce any shortest-path distances.
+- Floyd–Warshall correctly keeps the shortest paths as:
+    0 → 1 = 5
+    1 → 0 = −5
+    self-distances remain 0
+Expected behavior:
+The diameter is defined as the largest finite shortest-path value, which is 5.
+
+### test_case_3_negative_edges_no_cycle(self):
+- This test verifies correct behavior when the graph contains negative edge weights, but no negative-weight cycle.
+- In the test graph, there is a negative edge (1 → 2 = −5), but no sequence of edges creates a cycle with negative total cost. One node remains unreachable. Floyd–Warshall fully supports negative edges, as long as no negative cycle exists.
+Expected behavior:
+Since one vertex is unreachable from others, the diameter should be returned as INF (here represented as 1000).
+    
 ### Function Descriptions
 The code is organized into four main functions: floyd_warshall, graph_diameter, generate_graph, and main.
 
