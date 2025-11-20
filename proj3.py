@@ -153,7 +153,7 @@ def main():
 
     # Generate Plot
     # Extract data for plotting
-    x_axis_values = [data['n_cubed'] for data in final_data]
+    x_axis_values = [data['n'] for data in final_data]
     experimental_costs = [data['runtime'] for data in final_data]
     theoretical_adjusted = [data['adjusted_theoretical'] for data in final_data]
 

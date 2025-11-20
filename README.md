@@ -7,10 +7,12 @@ This project implements an efficient polynomial algorithm, Floyd-Warshall, to ca
 This code requires Python 3 and the following libraries:
 - numpy <br>
 To ensure you have the required libraries, you can run: pip install numpy
+- pandas <br>
+You can install with:  pip install pandas
 
 ### How to Run
 1.  **Main Analysis**: To run the experiment and measure the performance of the graph diameter calculation for various graph sizes, execute the main code:
-    `python3 proj3.py`
+    `python proj3.py`
 2.  **Unit Tests**: To verify the correctness of the core function, run the unit tests:
     `python proj3test.py`
 
