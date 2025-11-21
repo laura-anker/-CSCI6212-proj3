@@ -55,4 +55,4 @@ The code is organized into four main functions: floyd_warshall, graph_diameter, 
 
 
 ### Edge Cases
-The algorithm successfully manages edge cases critical to graph analysis: Disconnected Graphs are handled when calculating the final maximum diameter, ensuring the largest separation within the finite components is reported. The implementation also correctly supports paths containing Negative Edge Weights and properly processes Zero-Weight Cycles, maintaining the shortest path calculation throughout the matrix.
+The algorithm successfully manages edge cases critical to graph analysis: Disconnected Graphs are handled when calculating the final maximum diameter, ensuring the largest separation within the finite components is reported. The implementation also correctly supports paths containing Negative Edge Weights and properly processes Zero-Weight Cycles, maintaining the shortest path calculation throughout the matrix. Edge Cases are explained in detail in Section 6: Edge Case Analysis of the report.
